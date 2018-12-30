@@ -1,7 +1,7 @@
 {
-   "name": "@toba/tools",
-   "description": "Toba Tools",
-   "version": "5.0.0",
+   "name": "@toba/node-tools",
+   "description": "Toba Node Tools",
+   "version": "1.0.0",
    "private": false,
    "publishConfig": {
       "access": "public"
@@ -25,12 +25,12 @@
    },
    "repository": {
       "type": "git",
-      "url": "https://github.com/toba/tools"
+      "url": "https://github.com/toba/node-tools"
    },
-   "bugs": {
-      "url": "https://github.com/toba/tools/issues"
+   "dependencies": {
+      "@toba/tools": "^5.1.0",
+      "@types/node": "^10.12.18"
    },
-   "dependencies": {},
    "installConfig": {
       "pnp": false
    }

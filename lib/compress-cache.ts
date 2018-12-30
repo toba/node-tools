@@ -1,6 +1,13 @@
-import { Cache, is, unzip, gzip, CachePolicy, Queue } from './index';
+import {
+   Cache,
+   is,
+   unzip,
+   gzip,
+   CachePolicy,
+   Queue,
+   QueueEvent
+} from './index';
 import { EventType } from './cache';
-import { QueueEvent } from './queue';
 
 /**
  * Method to populate missing cache value.

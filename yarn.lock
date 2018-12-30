@@ -173,14 +173,13 @@
     "@toba/tools" "^4.0.0"
 
 "@toba/test@^2.0.0":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@toba/test/-/test-2.2.1.tgz#51ce141c22189f08508b9953bd18f1389df18d3b"
-  integrity sha512-RSVXoXfTMymVsEOStqcYsW6yKqhnzD/V12kiGqzT/wsjuuTIRTSXOYw4V32EsatrBsXC685tXAl4d19Ikv63iA==
+  version "2.3.1"
+  resolved "https://registry.yarnpkg.com/@toba/test/-/test-2.3.1.tgz#8982ecaeeec668300e3fea1ecc5fdb602e0e2f08"
+  integrity sha512-+KoIeq4G9HAxK+tjO6qQobZP8WClurMpguIkogYAu1Abh7jGOyHKUNxnb2VB9wvkoBl/+fiwo4fuLjShmHcPIQ==
   dependencies:
     "@toba/logger" "^2.0.4"
-    "@toba/tools" "^4.0.0"
+    "@toba/tools" "^5.0.0"
     "@types/jest" "^23.3.0"
-    "@types/node" "^10.5.0"
     jest "^23.5.0"
     jest-date-mock "^1.0.6"
     ts-jest "^23.10.4"
@@ -190,12 +189,17 @@
   resolved "https://registry.yarnpkg.com/@toba/tools/-/tools-4.4.1.tgz#85a888b9d7ab7ee882c727e2b10b6be88f70b118"
   integrity sha512-MLg6WzM7iOl+C7Nr6BD1SZMoucz5vIWNatqcQlN+BQi4gKj9MSMfXG4B8RW/HEfDbxRRCYh9CwZat8fResI4WQ==
 
+"@toba/tools@^5.0.0", "@toba/tools@^5.1.0":
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/@toba/tools/-/tools-5.1.0.tgz#dfbcc657dba1ae935b69927b0a102aae3b6e657e"
+  integrity sha512-yilkuX2GMYiGDOcBFD48fk4oS4fuCWhBETVL6VFe1M+inBb7RaB+UEq1w02zWmCsx98GVbWotSi0MTBclRnqmA==
+
 "@types/jest@^23.3.0":
   version "23.3.10"
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.10.tgz#4897974cc317bf99d4fe6af1efa15957fa9c94de"
   integrity sha512-DC8xTuW/6TYgvEg3HEXS7cu9OijFqprVDXXiOcdOKZCU/5PJNLZU37VVvmZHdtMiGOa8wAA/We+JzbdxFzQTRQ==
 
-"@types/node@^10.5.0":
+"@types/node@^10.12.18":
   version "10.12.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
@@ -2850,7 +2854,7 @@ lodash@^4.13.1, lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.4:
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.11.tgz#b39ea6229ef607ecd89e2c8df12536891cac9b8d"
   integrity sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==
 
-log-symbols@^2.0.0:
+log-symbols@^2.0.0, log-symbols@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/log-symbols/-/log-symbols-2.2.0.tgz#5740e1c5d6f0dfda4ad9323b5332107ef6b4c40a"
   integrity sha512-VeIAFslyIerEJLXHziedo2basKbMKtTw3vfn5IzG0XTjhAVEJyNHnL2p7vc+wBDSdQuUpNw3M2u6xb9QsAY5Eg==
@@ -3183,9 +3187,9 @@ node-pre-gyp@^0.10.0:
     tar "^4"
 
 node-releases@^1.1.1:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.2.tgz#93c17fba5eec8650ad908de5433fa8763baebe4d"
-  integrity sha512-j1gEV/zX821yxdWp/1vBMN0pSUjuH9oGUdLCb4PfUko6ZW7KdRs3Z+QGGwDUhYtSpQvdVVyLd2V0YvLsmdg5jQ==
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/node-releases/-/node-releases-1.1.3.tgz#aad9ce0dcb98129c753f772c0aa01360fb90fbd2"
+  integrity sha512-6VrvH7z6jqqNFY200kdB6HdzkgM96Oaj9v3dqGfgp6mF+cHmU4wyQKZ2/WPDRVoR0Jz9KqbamaBN0ZhdUaysUQ==
   dependencies:
     semver "^5.3.0"
 
@@ -3587,14 +3591,14 @@ postcss-media-query-parser@^0.2.3:
   integrity sha1-J7Ocb02U+Bsac7j3Y1HGCeXO8kQ=
 
 postcss-reporter@^6.0.0:
-  version "6.0.0"
-  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-6.0.0.tgz#44c873129d8c029a430b6d2186210d79c8de88b8"
-  integrity sha512-5xQXm1UPWuFObjbtyQzWvQaupru8yFcFi4HUlm6OPo1o2bUszYASuqRJ7bVArb3svGCdbYtqdMBKrqR1Aoy+tw==
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/postcss-reporter/-/postcss-reporter-6.0.1.tgz#7c055120060a97c8837b4e48215661aafb74245f"
+  integrity sha512-LpmQjfRWyabc+fRygxZjpRxfhRf9u/fdlKf4VHG4TSPbV2XNsuISzYW1KL+1aQzx53CAppa1bKG4APIB/DOXXw==
   dependencies:
-    chalk "^2.0.1"
-    lodash "^4.17.4"
-    log-symbols "^2.0.0"
-    postcss "^7.0.2"
+    chalk "^2.4.1"
+    lodash "^4.17.11"
+    log-symbols "^2.2.0"
+    postcss "^7.0.7"
 
 postcss-resolve-nested-selector@^0.1.1:
   version "0.1.1"
@@ -3656,7 +3660,7 @@ postcss-value-parser@^3.3.0, postcss-value-parser@^3.3.1:
   resolved "https://registry.yarnpkg.com/postcss-value-parser/-/postcss-value-parser-3.3.1.tgz#9ff822547e2893213cf1c30efa51ac5fd1ba8281"
   integrity sha512-pISE66AbVkp4fDQ7VHBwRNXzAAKJjw4Vw7nWI/+Q3vuly7SNfgYXvm6i5IgFylHGK5sP/xHAbB7N49OS4gWNyQ==
 
-postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.2, postcss@^7.0.3, postcss@^7.0.6:
+postcss@^7.0.0, postcss@^7.0.1, postcss@^7.0.2, postcss@^7.0.3, postcss@^7.0.6, postcss@^7.0.7:
   version "7.0.7"
   resolved "https://registry.yarnpkg.com/postcss/-/postcss-7.0.7.tgz#2754d073f77acb4ef08f1235c36c5721a7201614"
   integrity sha512-HThWSJEPkupqew2fnuQMEI2YcTj/8gMV3n80cMdJsKxfIh5tHf7nM5JigNX6LxVMqo6zkgQNAI88hyFvBk41Pg==

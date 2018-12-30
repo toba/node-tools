@@ -1,18 +1,15 @@
-[![npm package](https://img.shields.io/npm/v/@toba/tools.svg)](https://www.npmjs.org/package/@toba/tools)
-[![Build Status](https://travis-ci.org/toba/tools.svg?branch=master)](https://travis-ci.org/toba/tools)
+[![npm package](https://img.shields.io/npm/v/@toba/node-tools.svg)](https://www.npmjs.org/package/@toba/node-tools)
+[![Build Status](https://travis-ci.org/toba/node-tools.svg?branch=master)](https://travis-ci.org/toba/node-tools)
 ![Code style](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)
-[![Dependencies](https://img.shields.io/david/toba/tools.svg)](https://david-dm.org/toba/tools)
-[![DevDependencies](https://img.shields.io/david/dev/toba/tools.svg)](https://david-dm.org/toba/tools#info=devDependencies&view=list)
-[![codecov](https://codecov.io/gh/toba/tools/branch/master/graph/badge.svg)](https://codecov.io/gh/toba/tools)
+[![Dependencies](https://img.shields.io/david/toba/node-tools.svg)](https://david-dm.org/toba/node-tools)
+[![DevDependencies](https://img.shields.io/david/dev/toba/node-tools.svg)](https://david-dm.org/toba/node-tools#info=devDependencies&view=list)
+[![Test Coverage](https://codecov.io/gh/toba/node-tools/branch/master/graph/badge.svg)](https://codecov.io/gh/toba/node-tools)
 
 <img src='https://toba.github.io/about/images/logo-colored.svg' width="100" align="right"/>
 
-# Toba Tools
+# Toba Node Tools
 
-📖 [Using a TypeScript module](https://toba.github.io/about/usage)
-
--  [Identity](#identity)
--  [Caching](#caching)
+Utility methods with Node dependencies.
 
 ### Identity
 
