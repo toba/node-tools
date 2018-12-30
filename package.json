@@ -3,6 +3,7 @@
    "description": "Toba Node Tools",
    "version": "1.0.0",
    "private": false,
+   "sideEffects": false,
    "publishConfig": {
       "access": "public"
    },
@@ -20,7 +21,7 @@
       "test": "jest --coverage"
    },
    "devDependencies": {
-      "@toba/develop": "^3.0.0",
+      "@toba/develop": "^4.0.0",
       "@toba/test": "^2.0.0"
    },
    "repository": {

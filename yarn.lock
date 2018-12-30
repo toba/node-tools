@@ -151,11 +151,12 @@
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
 
-"@toba/develop@^3.0.0":
-  version "3.1.1"
-  resolved "https://registry.yarnpkg.com/@toba/develop/-/develop-3.1.1.tgz#6b9e4e6a7896e66ba7402a4da376c6b7b648de38"
-  integrity sha512-Warv/BsB4nMLt10l54XRT0bZMb9tHoYfyqZFMf7TPOSYA+nd82xV6JZeSj0B4dYYiXjtvQu/uin07Zngrzxjqg==
+"@toba/develop@^4.0.0":
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/@toba/develop/-/develop-4.0.1.tgz#258c29d0c86ff4337dfe876f74b8aea7b3d483ee"
+  integrity sha512-P6XTqI4cub3sTl4Bge4j3qDklNplNfKxy9pLPsAPwtmUr68e7axGjPfjaCrAdsDEDzguxVwduJdcpt6mMkn8rA==
   dependencies:
+    "@types/prettier" "^1.15.2"
     prettier "^1.15.0"
     stylelint "^9.9.0"
     stylelint-config-standard "^18.2.0"
@@ -203,6 +204,11 @@
   version "10.12.18"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-10.12.18.tgz#1d3ca764718915584fcd9f6344621b7672665c67"
   integrity sha512-fh+pAqt4xRzPfqA6eh3Z2y6fyZavRIumvjhaCL753+TVkGKGhpPeyrJG2JftD0T9q4GF00KjefsQ+PQNDdWQaQ==
+
+"@types/prettier@^1.15.2":
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/@types/prettier/-/prettier-1.15.2.tgz#91594ea7cb6f3b1f7ea69f32621246654c7cc231"
+  integrity sha512-XIB0ZCaFZmWUHAa9dBqP5UKXXHwuukmVlP+XcyU94dui2k+l2lG+CHAbt2ffenHPUqoIs5Beh8Pdf2YEq/CZ7A==
 
 abab@^2.0.0:
   version "2.0.0"
