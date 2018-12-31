@@ -1,3 +1,3 @@
 {
-   "extends": "./node_modules/@toba/develop/ts/tsconfig.lib"
+   "extends": "@toba/develop/tsconfig.lib"
 }

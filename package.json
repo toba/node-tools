@@ -1,7 +1,7 @@
 {
    "name": "@toba/node-tools",
    "description": "Toba Node Tools",
-   "version": "1.0.0",
+   "version": "1.0.1",
    "private": false,
    "sideEffects": false,
    "publishConfig": {
@@ -22,7 +22,7 @@
    },
    "devDependencies": {
       "@toba/develop": "^4.0.0",
-      "@toba/test": "^2.0.0"
+      "@toba/test": "^3.0.0"
    },
    "repository": {
       "type": "git",
