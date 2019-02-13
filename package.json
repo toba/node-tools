@@ -1,27 +1,29 @@
 {
    "name": "@toba/node-tools",
    "description": "Toba Node Tools",
-   "version": "1.0.1",
+   "version": "1.1.0",
    "private": false,
    "sideEffects": false,
    "publishConfig": {
       "access": "public"
    },
-   "main": "dist/index.js",
-   "types": "dist/index.d.ts",
+   "main": "es6/index.js",
+   "types": "es6/index.d.ts",
    "files": [
-      "dist"
+      "es6"
    ],
    "author": {
       "name": "Jason Abbott"
    },
    "license": "MIT",
    "scripts": {
-      "prepublishOnly": "./node_modules/.bin/tsc",
+      "build:es6": "./node_modules/.bin/tsc --project tsconfig.build.json",
+      "build:cjs": "./node_modules/.bin/tsc --project tsconfig.json",
+      "prepublishOnly": "npm run build:es6 & npm run build:cjs",
       "test": "jest --coverage"
    },
    "devDependencies": {
-      "@toba/develop": "^4.0.0",
+      "@toba/develop": "^6.0.0",
       "@toba/test": "^3.0.0"
    },
    "repository": {
@@ -29,10 +31,7 @@
       "url": "https://github.com/toba/node-tools"
    },
    "dependencies": {
-      "@toba/tools": "^5.1.0",
-      "@types/node": "^10.12.18"
-   },
-   "installConfig": {
-      "pnp": false
+      "@toba/tools": "^6.0.0",
+      "@types/node": "^11.0.0"
    }
 }

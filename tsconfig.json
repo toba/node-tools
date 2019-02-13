@@ -1,3 +1,6 @@
 {
-   "extends": "@toba/develop/tsconfig.lib"
+   "extends": "@toba/develop/tsconfig.cjs",
+   "compilerOptions": {
+      "declaration": false
+   }
 }

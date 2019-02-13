@@ -1,4 +1,4 @@
-import * as compress from 'zlib';
+import compress from 'zlib';
 import { is, Encoding } from './index';
 
 /**
@@ -65,3 +65,13 @@ export function env(key: string, alternate?: string): string {
    }
    return value;
 }
+
+/**
+ * Whether the current path is that of a dependency; specifically, whether it's
+ * within a `node_modules` descendant of the working directory.
+ * 
+ * path = /Users/jason-abbott/dev/src/github.com/toba/node-tools/src
+ * cwd = /Users/jason-abbott/dev/src/github.com/toba/node-tools
+ */
+export const isDependency = (path: string = __dirname): boolean =>
+   path.includes('node_modules') && path.startsWith(process.cwd());

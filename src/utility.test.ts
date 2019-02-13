@@ -1,5 +1,6 @@
 import '@toba/test';
-import { byteSize, gzip, unzip, env } from './index';
+import path from 'path';
+import { byteSize, gzip, unzip, env, isDependency } from './index';
 import { lipsum } from '@toba/test';
 
 test('reports byte size of strings and buffers', () => {
@@ -35,4 +36,13 @@ test('reads environmnent variables with option for alternate', () => {
    expect(v).toBeUndefined();
    expect(e).toBeDefined();
    expect(e!.message).toBe(`Environment value ${nope} does not exist`);
+});
+
+test('determines whether path is likely that of a dependency', () => {
+   // right path but not node_modules
+   expect(isDependency()).toBe(false);
+   // node_modules but not right path
+   expect(isDependency('/Users/person/src/node_modules/dep')).toBe(false);
+   // just right
+   expect(isDependency(path.resolve(__dirname, 'node_modules'))).toBe(true);
 });
