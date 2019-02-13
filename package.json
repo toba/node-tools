@@ -1,16 +1,17 @@
 {
    "name": "@toba/node-tools",
    "description": "Toba Node Tools",
-   "version": "1.1.0",
+   "version": "1.1.1",
    "private": false,
    "sideEffects": false,
    "publishConfig": {
       "access": "public"
    },
-   "main": "es6/index.js",
+   "main": "cjs/index.js",
    "types": "es6/index.d.ts",
    "files": [
-      "es6"
+      "es6",
+      "cjs"
    ],
    "author": {
       "name": "Jason Abbott"
