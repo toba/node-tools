@@ -1,38 +1,38 @@
 {
-   "name": "@toba/node-tools",
-   "description": "Toba Node Tools",
-   "version": "1.2.0",
-   "private": false,
-   "sideEffects": false,
-   "publishConfig": {
-      "access": "public"
-   },
-   "main": "cjs/index.js",
-   "types": "es6/index.d.ts",
-   "files": [
-      "es6",
-      "cjs"
-   ],
-   "author": {
-      "name": "Jason Abbott"
-   },
-   "license": "MIT",
-   "scripts": {
-      "build:es6": "./node_modules/.bin/tsc --project tsconfig.build.json",
-      "build:cjs": "./node_modules/.bin/tsc --project tsconfig.json",
-      "prepublishOnly": "npm run build:es6 & npm run build:cjs",
-      "test": "jest --coverage"
-   },
-   "devDependencies": {
-      "@toba/develop": "^6.0.0",
-      "@toba/test": "^3.0.0"
-   },
-   "repository": {
-      "type": "git",
-      "url": "https://github.com/toba/node-tools"
-   },
-   "dependencies": {
-      "@toba/tools": "^6.0.0",
-      "@types/node": "^11.0.0"
-   }
+  "name": "@toba/node-tools",
+  "description": "Toba Node Tools",
+  "version": "1.2.1",
+  "private": false,
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "cjs/index.js",
+  "types": "esm/index.d.ts",
+  "files": [
+    "esm",
+    "cjs"
+  ],
+  "author": {
+    "name": "Jason Abbott"
+  },
+  "license": "MIT",
+  "scripts": {
+    "build:esm": "./node_modules/.bin/tsc --project tsconfig.build.json",
+    "build:cjs": "./node_modules/.bin/tsc --project tsconfig.json",
+    "prepublishOnly": "npm run build:esm & npm run build:cjs",
+    "test": "jest --coverage"
+  },
+  "devDependencies": {
+    "@toba/develop": "^6.0.0",
+    "@toba/test": "^3.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/toba/node-tools"
+  },
+  "dependencies": {
+    "@toba/tools": "^6.0.0",
+    "@types/node": "^11.0.0"
+  }
 }
