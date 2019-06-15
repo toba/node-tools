@@ -189,7 +189,7 @@ export class Cache<T> {
    get(key: string, silent = false): T | null {
       if (this._items.has(key)) {
          const item = this._items.get(key);
-         return is.value(item) ? item.value : null;
+         return is.value<CacheItem<T>>(item) ? item.value : null;
       } else {
          if (!silent) {
             this.events.emit(EventType.KeyNotFound, key);
