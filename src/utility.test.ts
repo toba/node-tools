@@ -1,5 +1,5 @@
 import '@toba/test';
-import path from 'path';
+import * as path from 'path';
 import { byteSize, gzip, unzip, env, isDependency } from './index';
 import { lipsum } from '@toba/test';
 

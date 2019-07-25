@@ -1,5 +1,5 @@
-import compress from 'zlib';
-import { is, Encoding } from './index';
+import * as compress from 'zlib';
+import { is, Encoding, ValueType } from './index';
 
 /**
  * GZip compress a string.
@@ -37,7 +37,7 @@ export function unzip(value: Buffer): Promise<string> {
  * @see https://stackoverflow.com/questions/1248302/how-to-get-the-size-of-a-javascript-object
  */
 export function byteSize(obj: any): number {
-   if (typeof obj === is.Type.String) {
+   if (typeof obj === ValueType.String) {
       return obj.length;
    }
    if (obj instanceof Buffer) {

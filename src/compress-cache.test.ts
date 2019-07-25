@@ -10,7 +10,8 @@ test('compresses and decompresses text values', async () => {
    expect(cache.size).toBe(282);
 
    const bytes = await cache.getZip('key1');
-   expect(bytes.length).toBe(282);
+   expect(bytes).not.toBeNull();
+   expect(bytes!.length).toBe(282);
 
    const text = await cache.getText('key1');
    expect(text).toBe(lipsum);

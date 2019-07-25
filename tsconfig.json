@@ -1,6 +1,3 @@
 {
-   "extends": "@toba/develop/tsconfig.cjs",
-   "compilerOptions": {
-      "declaration": false
-   }
+   "extends": "@toba/develop/tsconfig.test"
 }
