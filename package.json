@@ -1,9 +1,8 @@
 {
    "name": "@toba/node-tools",
    "description": "Toba Node Tools",
-   "version": "1.4.0",
+   "version": "1.4.1",
    "private": false,
-   "sideEffects": false,
    "publishConfig": {
       "access": "public"
    },
