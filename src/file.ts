@@ -3,7 +3,7 @@ import { EOL as nl } from 'os';
 import * as path from 'path';
 import * as Stream from 'stream';
 import * as readline from 'readline';
-import { Encoding, is } from '@toba/tools/cjs';
+import { Encoding, is } from '@toba/tools';
 
 /**
  * Prepend local path to file name.
