@@ -15,6 +15,6 @@ export {
    ensureExists,
    deleteFiles,
    eachDirEntry,
-   DirEntryPredicate as EntryPredicate,
-   DirEntryTask as EntryTask
+   DirEntryPredicate,
+   DirEntryTask
 } from './file';
