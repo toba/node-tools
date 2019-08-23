@@ -156,6 +156,15 @@ export const deleteFiles = (dir: string) =>
    });
 
 /**
+ * Method to execute on a directory entry.
+ */
+export type DirEntryTask<T> = (e: fs.Dirent) => Promise<T>;
+/**
+ * Filter a directory entry.
+ */
+export type DirEntryPredicate = (e: fs.Dirent) => boolean;
+
+/**
  * Execute an asynchronous task for each entry in a directory.
  * @param dir Fully qualified path
  * @param predicate Filter method
@@ -164,8 +173,8 @@ export const deleteFiles = (dir: string) =>
  */
 export const eachDirEntry = <T>(
    dir: string,
-   predicate: EntryPredicate,
-   task: EntryTask<T>,
+   predicate: DirEntryPredicate,
+   task: DirEntryTask<T>,
    silent = false
 ) =>
    new Promise<T[]>(resolve => {

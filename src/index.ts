@@ -13,5 +13,8 @@ export {
    canWrite,
    writeFile,
    ensureExists,
-   deleteFiles
+   deleteFiles,
+   eachDirEntry,
+   DirEntryPredicate as EntryPredicate,
+   DirEntryTask as EntryTask
 } from './file';
