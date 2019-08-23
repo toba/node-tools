@@ -154,3 +154,34 @@ export const deleteFiles = (dir: string) =>
          }
       });
    });
+
+/**
+ * Execute an asynchronous task for each entry in a directory.
+ * @param dir Fully qualified path
+ * @param predicate Filter method
+ * @param task
+ * @param silent Whether to supress console errors
+ */
+export const eachDirEntry = <T>(
+   dir: string,
+   predicate: EntryPredicate,
+   task: EntryTask<T>,
+   silent = false
+) =>
+   new Promise<T[]>(resolve => {
+      fs.readdir(dir, { withFileTypes: true }, (err, entries) => {
+         if (is.value(err)) {
+            if (!silent) {
+               console.error(` ❌ Could not read ${dir}`, err);
+            }
+            return resolve();
+         }
+         if (entries.length == 0) {
+            if (!silent) {
+               console.log('❓ Folder is empty', dir);
+            }
+            return resolve();
+         }
+         Promise.all(entries.filter(predicate).map(task)).then(resolve);
+      });
+   });
