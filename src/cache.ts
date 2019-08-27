@@ -15,10 +15,10 @@ export interface CacheItem<T> {
  */
 export interface CachePolicy {
    /** Maximum items before earliest is removed from cache. */
-   maxItems: number;
+   maxItems?: number;
    /** Maximum age in milliseconds before item is removed from cache. */
-   maxAge: number;
-   maxBytes: number;
+   maxAge?: number;
+   maxBytes?: number;
 }
 
 export enum EventType {
@@ -141,7 +141,7 @@ export class Cache<T> {
          sorted.sort((a, b) => a.added - b.added);
 
          // first remove those that exceed maximum age
-         if (this._policy.maxAge > 0) {
+         if (this._policy.maxAge !== undefined && this._policy.maxAge > 0) {
             const oldest = new Date().getTime() - this._policy.maxAge;
             remove = remove.concat(
                sorted.filter(i => i.added < oldest).map(i => i.key)
@@ -151,6 +151,7 @@ export class Cache<T> {
 
          // then remove items beyond the maximum count
          if (
+            this._policy.maxItems !== undefined &&
             this._policy.maxItems > 0 &&
             sorted.length > this._policy.maxItems
          ) {
@@ -161,7 +162,11 @@ export class Cache<T> {
          }
 
          // finally remove as many as are needed to go below maximum byte size
-         if (this._policy.maxBytes > 0 && this._canMeasureSize) {
+         if (
+            this._policy.maxBytes !== undefined &&
+            this._policy.maxBytes > 0 &&
+            this._canMeasureSize
+         ) {
             let remainingSize = totalSize(this._items, remove);
 
             while (remainingSize > this._policy.maxBytes) {
