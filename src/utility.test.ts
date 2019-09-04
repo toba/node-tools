@@ -24,7 +24,7 @@ test('reads environmnent variables with option for alternate', () => {
    expect(env('PATH')).toBeDefined();
    expect(env(nope, 'alternate')).toBe('alternate');
 
-   let v: string | undefined;
+   let v: string | null | undefined;
    let e: Error | undefined = undefined;
 
    try {

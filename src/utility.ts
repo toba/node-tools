@@ -50,7 +50,7 @@ export function byteSize(obj: any): number {
  * Return environment value. If the key doesn't exist then return the alternate
  * value. If no alternate is given for a missing key then throw an error.
  */
-export function env(key: string, alternate?: string): string {
+export function env(key: string, alternate?: string | null): string | null {
    if (!is.value(process)) {
       throw new Error(
          'Environment variables are not accessible in this context'
