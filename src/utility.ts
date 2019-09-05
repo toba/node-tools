@@ -47,9 +47,15 @@ export function byteSize(obj: any): number {
 }
 
 /**
+ * Return environment value. If the key doesn't exist then throw an error.
+ */
+export function env(key: string): string;
+/**
  * Return environment value. If the key doesn't exist then return the alternate
  * value. If no alternate is given for a missing key then throw an error.
  */
+export function env(key: string, alternate: string | null): string | null;
+
 export function env(key: string, alternate?: string | null): string | null {
    if (!is.value(process)) {
       throw new Error(
