@@ -25,14 +25,14 @@
    },
    "devDependencies": {
       "@toba/develop": "^6.7.3",
-      "@toba/test": "^4.1.13"
+      "@toba/test": "^4.1.17"
    },
    "repository": {
       "type": "git",
       "url": "https://github.com/toba/node-tools"
    },
    "dependencies": {
-      "@toba/tools": "^6.8.1",
-      "@types/node": "^12.7.12"
+      "@toba/tools": "^6.10.0",
+      "@types/node": "^12.12.6"
    }
 }
