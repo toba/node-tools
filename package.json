@@ -1,7 +1,7 @@
 {
    "name": "@toba/node-tools",
    "description": "Toba Node Tools",
-   "version": "1.4.12",
+   "version": "1.4.13",
    "private": false,
    "publishConfig": {
       "access": "public"
@@ -24,7 +24,7 @@
       "test": "jest --coverage"
    },
    "devDependencies": {
-      "@toba/develop": "^6.7.3",
+      "@toba/develop": "^6.7.4",
       "@toba/test": "^4.1.17"
    },
    "repository": {
@@ -32,7 +32,7 @@
       "url": "https://github.com/toba/node-tools"
    },
    "dependencies": {
-      "@toba/tools": "^6.10.0",
-      "@types/node": "^12.12.6"
+      "@toba/tools": "^6.10.1",
+      "@types/node": "^12.12.11"
    }
 }
