@@ -51,19 +51,19 @@ const defaultPolicy: CachePolicy = {
  * Cache items of type `T` in memory.
  */
 export class Cache<T> {
-   private _items: Map<string, CacheItem<T>>;
-   private _policy: CachePolicy;
-   private _evictTimer: NodeJS.Timer;
+   private items: Map<string, CacheItem<T>>;
+   private policy: CachePolicy;
+   private evictTimer: NodeJS.Timer;
    /**
     * Whether stored item types can have their byte size measured.
     */
-   private _canMeasureSize: boolean = true;
+   private canMeasureSize = true;
 
    events: EventEmitter<EventType, any>;
 
    constructor(policy: Partial<CachePolicy> = {}) {
-      this._items = new Map();
-      this._policy = merge(defaultPolicy, policy);
+      this.items = new Map();
+      this.policy = merge(defaultPolicy, policy);
       this.events = new EventEmitter();
    }
 
@@ -71,37 +71,37 @@ export class Cache<T> {
     * Number of items in cache.
     */
    get length(): number {
-      return this._items.size;
+      return this.items.size;
    }
 
    /**
     * Total byte size of items or -1 if size can't be measured.
     */
    get size(): number {
-      return this._canMeasureSize ? totalSize(this._items) : -1;
+      return this.canMeasureSize ? totalSize(this.items) : -1;
    }
 
    /**
     * Whether cache contains a key.
     */
-   contains(key: string, allowEmpty: boolean = false): boolean {
+   contains(key: string, allowEmpty = false): boolean {
       return (
-         this._items.has(key) && (allowEmpty || !is.empty(this._items.get(key)))
+         this.items.has(key) && (allowEmpty || !is.empty(this.items.get(key)))
       );
    }
 
    add(key: string, value: T) {
       if (is.value<T>(value)) {
          let size = 0;
-         if (this._canMeasureSize) {
+         if (this.canMeasureSize) {
             size = byteSize(value);
             if (size == -1) {
-               this._canMeasureSize = false;
+               this.canMeasureSize = false;
                size = 0;
             }
          }
 
-         this._items.set(key, {
+         this.items.set(key, {
             key,
             value,
             added: new Date().getTime(),
@@ -116,10 +116,10 @@ export class Cache<T> {
     * Asynchronous check for evictable items.
     */
    private schedulePrune(): Cache<T> {
-      if (this._evictTimer) {
-         clearTimeout(this._evictTimer);
+      if (is.value(this.evictTimer)) {
+         clearTimeout(this.evictTimer);
       }
-      this._evictTimer = setTimeout(this.prune.bind(this), 10);
+      this.evictTimer = setTimeout(this.prune.bind(this), 10);
       return this;
    }
 
@@ -129,20 +129,20 @@ export class Cache<T> {
    prune(): void {
       if (
          this.length > 0 &&
-         (this._policy.maxAge != 0 ||
-            this._policy.maxItems != 0 ||
-            this._policy.maxBytes != 0)
+         (this.policy.maxAge != 0 ||
+            this.policy.maxItems != 0 ||
+            this.policy.maxBytes != 0)
       ) {
          /** Sorted objects allow removal of oldest */
-         let sorted: CacheItem<T>[] = Array.from(this._items.values());
+         let sorted: CacheItem<T>[] = Array.from(this.items.values());
          /** List of item keys to be removed */
          let remove: string[] = [];
 
          sorted.sort((a, b) => a.added - b.added);
 
          // first remove those that exceed maximum age
-         if (this._policy.maxAge !== undefined && this._policy.maxAge > 0) {
-            const oldest = new Date().getTime() - this._policy.maxAge;
+         if (this.policy.maxAge !== undefined && this.policy.maxAge > 0) {
+            const oldest = new Date().getTime() - this.policy.maxAge;
             remove = remove.concat(
                sorted.filter(i => i.added < oldest).map(i => i.key)
             );
@@ -151,11 +151,11 @@ export class Cache<T> {
 
          // then remove items beyond the maximum count
          if (
-            this._policy.maxItems !== undefined &&
-            this._policy.maxItems > 0 &&
-            sorted.length > this._policy.maxItems
+            this.policy.maxItems !== undefined &&
+            this.policy.maxItems > 0 &&
+            sorted.length > this.policy.maxItems
          ) {
-            const tooMany = sorted.length - this._policy.maxItems;
+            const tooMany = sorted.length - this.policy.maxItems;
             remove = remove.concat(sorted.slice(0, tooMany).map(i => i.key));
             // only keep sorted items that aren't in the remove list
             sorted = sorted.filter(i => remove.indexOf(i.key) == -1);
@@ -163,13 +163,13 @@ export class Cache<T> {
 
          // finally remove as many as are needed to go below maximum byte size
          if (
-            this._policy.maxBytes !== undefined &&
-            this._policy.maxBytes > 0 &&
-            this._canMeasureSize
+            this.policy.maxBytes !== undefined &&
+            this.policy.maxBytes > 0 &&
+            this.canMeasureSize
          ) {
-            let remainingSize = totalSize(this._items, remove);
+            let remainingSize = totalSize(this.items, remove);
 
-            while (remainingSize > this._policy.maxBytes) {
+            while (remainingSize > this.policy.maxBytes) {
                const item = sorted.shift();
                if (item !== undefined) {
                   remainingSize -= item.size;
@@ -180,7 +180,7 @@ export class Cache<T> {
 
          if (remove.length > 0) {
             remove.forEach(key => {
-               this._items.delete(key);
+               this.items.delete(key);
             });
 
             this.events.emit(EventType.ItemsEvicted, remove);
@@ -192,24 +192,23 @@ export class Cache<T> {
     * @param silent Supress events if `true`
     */
    get(key: string, silent = false): T | null {
-      if (this._items.has(key)) {
-         const item = this._items.get(key);
+      if (this.items.has(key)) {
+         const item = this.items.get(key);
          return is.value<CacheItem<T>>(item) ? item.value : null;
-      } else {
-         if (!silent) {
-            this.events.emit(EventType.KeyNotFound, key);
-         }
-         return null;
       }
+      if (!silent) {
+         this.events.emit(EventType.KeyNotFound, key);
+      }
+      return null;
    }
 
    remove(key: string): Cache<T> {
-      this._items.delete(key);
+      this.items.delete(key);
       return this;
    }
 
    clear(): Cache<T> {
-      this._items.clear();
+      this.items.clear();
       return this;
    }
 
@@ -217,7 +216,7 @@ export class Cache<T> {
     * Apply new cache policy and prune accordingly.
     */
    updatePolicy(policy: Partial<CachePolicy>): Cache<T> {
-      this._policy = merge(defaultPolicy, policy);
+      this.policy = merge(defaultPolicy, policy);
       return this.schedulePrune();
    }
 }

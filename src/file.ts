@@ -14,7 +14,10 @@ export const localPath = (name: string) => path.join(__dirname, name);
  * If path has no slash then prepend local path.
  */
 export const normalizePath = (filePath: string) =>
-   /[\\\/]/.test(filePath) ? filePath : localPath(filePath);
+   /[\\/]/.test(filePath) ? filePath : localPath(filePath);
+
+export const loadStream = (filePath: string) =>
+   fs.createReadStream(normalizePath(filePath));
 
 /**
  * Technique that supports large text files.
@@ -44,9 +47,6 @@ export async function readFileText(filePath: string) {
    const buffer = await readFile(filePath);
    return buffer.toString(Encoding.UTF8);
 }
-
-export const loadStream = (filePath: string) =>
-   fs.createReadStream(normalizePath(filePath));
 
 /**
  * Whether SVG path can be accessed by the current user.
@@ -85,30 +85,30 @@ export const writeFile = (
    });
 
 /**
- * Ensure a path exists.
- */
-export const ensureExists = (dir: string) =>
-   pathExists(dir).then(exists => {
-      if (!exists) {
-         return new Promise<void>((resolve, reject) => {
-            fs.mkdir(dir, err => {
-               if (err !== null) {
-                  reject(err);
-               } else {
-                  resolve();
-               }
-            });
-         });
-      }
-   });
-
-/**
  * Whether path exists.
  */
 export const pathExists = (dir: string) =>
    new Promise<boolean>(resolve => {
       fs.exists(dir, resolve);
    });
+
+/**
+ * Ensure a path exists.
+ */
+export const ensureExists = (dir: string) =>
+   pathExists(dir).then(exists =>
+      exists
+         ? Promise.resolve()
+         : new Promise<void>((resolve, reject) => {
+              fs.mkdir(dir, err => {
+                 if (err !== null) {
+                    reject(err);
+                 } else {
+                    resolve();
+                 }
+              });
+           })
+   );
 
 /**
  * Remove all files within the given folder.
@@ -136,9 +136,9 @@ export const deleteFiles = (dir: string) =>
 
          if (cannotRemove !== undefined) {
             reject(
-               `Target directory cannot be removed because it contains ${
-                  cannotRemove.name
-               }`
+               new Error(
+                  `Target directory cannot be removed because it contains ${cannotRemove.name}`
+               )
             );
             return;
          }
@@ -191,6 +191,6 @@ export const eachDirEntry = <T>(
             }
             return resolve();
          }
-         Promise.all(entries.filter(predicate).map(task)).then(resolve);
+         return Promise.all(entries.filter(predicate).map(task)).then(resolve);
       });
    });
