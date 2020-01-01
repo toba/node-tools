@@ -135,8 +135,11 @@ export const ensureAllExist = (dir: string) => {
 
 /**
  * Remove all files within the given folder.
+ *
+ * @param errorIfFound List of file names that will trigger an error if found in
+ * `dir` (e.g. ['package.json', '.gitignore', 'tsconfig.json'])
  */
-export const deleteFiles = (dir: string) =>
+export const deleteFiles = (dir: string, errorIfFound: string[] = []) =>
    new Promise((resolve, reject) => {
       fs.readdir(dir, { withFileTypes: true }, (err, entries) => {
          if (is.value(err)) {
@@ -154,7 +157,6 @@ export const deleteFiles = (dir: string) =>
 
          let f: fs.Dirent | undefined;
 
-         const errorIfFound = ['package.json', '.gitignore', 'tsconfig.json'];
          const cannotRemove = files.find(f => errorIfFound.includes(f.name));
 
          if (cannotRemove !== undefined) {
@@ -166,7 +168,7 @@ export const deleteFiles = (dir: string) =>
             return;
          }
 
-         while ((f = files.pop()) != null) {
+         while ((f = files.pop()) !== undefined) {
             fs.unlink(f.name, err => {
                if (is.value(err)) {
                   reject(err);
