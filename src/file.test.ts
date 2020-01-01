@@ -1,5 +1,11 @@
 import * as path from 'path';
-import { readFile, readBigFile, readFileText, normalizePath } from './file';
+import {
+   readFile,
+   readBigFile,
+   readFileText,
+   normalizePath,
+   ensureAllExist
+} from './file';
 
 /** File to load. */
 const testFile = './LICENSE';
@@ -29,4 +35,11 @@ test('reads large files', async () => {
    expect(text).toBeDefined();
    expect(typeof text).toBe('string');
    expect(text.includes(content)).toBe(true);
+});
+
+test.skip('ensures all parts of a path exist', () => {
+   const dir = path.join(__dirname, '__mocks__', 'data');
+   ensureAllExist(dir);
+
+   expect(2).toBe(2);
 });

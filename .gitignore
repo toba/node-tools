@@ -4,3 +4,4 @@ yarn-error.log
 esm/
 cjs/
 .pnp*
+src/mocks/data/

@@ -13,6 +13,7 @@ export {
    canWrite,
    writeFile,
    ensureExists,
+   ensureAllExist,
    deleteFiles,
    eachDirEntry,
    DirEntryPredicate,

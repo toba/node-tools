@@ -93,7 +93,9 @@ export const pathExists = (dir: string) =>
    });
 
 /**
- * Ensure a path exists.
+ * Ensure a path exists. This assumes the path other than the final file or
+ * folder (leaf) is known to exist. An error may be thrown if that is not the
+ * case. To handle that possibility, use `ensureAllExist()`.
  */
 export const ensureExists = (dir: string) =>
    pathExists(dir).then(exists =>
@@ -109,6 +111,27 @@ export const ensureExists = (dir: string) =>
               });
            })
    );
+
+/**
+ * Ensure all parts of a path exist. To check only if the last file or folder
+ * (leaf) of a path exists, use `ensureExists()`.
+ */
+export const ensureAllExist = (dir: string) => {
+   const parts = dir.split(path.sep);
+   const paths = parts.map((_, i) => parts.slice(0, i + 1).join(path.sep));
+   let firstMissingPath = 0;
+
+   for (let i = paths.length - 1; i >= 0; i--) {
+      if (fs.existsSync(paths[i])) {
+         firstMissingPath = i + 1;
+         break;
+      }
+   }
+
+   for (let i = firstMissingPath; i < paths.length; i++) {
+      fs.mkdirSync(paths[i]);
+   }
+};
 
 /**
  * Remove all files within the given folder.
