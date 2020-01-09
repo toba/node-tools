@@ -49,7 +49,7 @@ export async function readFileText(filePath: string) {
 }
 
 /**
- * Whether SVG path can be accessed by the current user.
+ * Whether path can be accessed by the current user.
  */
 const canAccess = (dir: string, accessType: number) =>
    new Promise<boolean>(resolve => {
