@@ -1,7 +1,7 @@
 {
    "name": "@toba/node-tools",
    "description": "Toba Node Tools",
-   "version": "1.5.3",
+   "version": "1.5.4",
    "private": false,
    "publishConfig": {
       "access": "public"
@@ -18,21 +18,21 @@
    },
    "license": "MIT",
    "scripts": {
-      "build:esm": "./node_modules/.bin/tsc --project ./node_modules/@toba/develop/tsconfig.esm.json",
-      "build:cjs": "./node_modules/.bin/tsc --project ./node_modules/@toba/develop/tsconfig.cjs-min.json",
+      "build:esm": "tsc --project ./node_modules/@toba/develop/tsconfig.esm.json",
+      "build:cjs": "tsc --project ./node_modules/@toba/develop/tsconfig.cjs-min.json",
       "prepublishOnly": "npm run build:esm & npm run build:cjs",
       "test": "jest --coverage"
    },
    "devDependencies": {
-      "@toba/develop": "^6.8.0",
-      "@toba/test": "^4.2.0"
+      "@toba/develop": "^6.8.1",
+      "@toba/test": "^4.2.1"
    },
    "repository": {
       "type": "git",
       "url": "https://github.com/toba/node-tools"
    },
    "dependencies": {
-      "@toba/tools": "^6.13.4",
+      "@toba/tools": "^6.13.5",
       "@types/node": "^13.9.1"
    }
 }
